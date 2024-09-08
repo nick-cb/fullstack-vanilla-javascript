@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "name": "Run Test Debugger",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "test:dev"
+      ],
+      "cwd": "${fileDirname}",
+      "skipFiles": [
+        "<node_internals>/**/**",
+        "node_modules/**"
+      ],
+      "type": "pwa-node"
+    }
+  ]
+}
