@@ -1,16 +1,20 @@
 {
-  "name": "initial-app-template",
+  "name": "@nick-cb/fvj",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "fvj": "./ui/index.js"
+  },
   "scripts": {
     "web": "npx browser-sync './' ui/",
     "cli": "node ui/index.js",
+    "cli:dev": "node --inspect --watch ui/index.js",
     "test": "node --experimental-test-coverage --test test/",
     "test:dev": "node --inspect --watch --test test/"
   },
   "keywords": [],
-  "author": "erickwendel",
+  "author": "nick",
   "license": "ISC",
   "type": "module",
   "engines": {
@@ -18,5 +22,9 @@
   },
   "devDependencies": {
     "browser-sync": "^2.29.3"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "4.11"
   }
 }
