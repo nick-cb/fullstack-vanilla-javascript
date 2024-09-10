@@ -10,18 +10,18 @@ on:
       - main
 jobs:
   setup-and-test:
-    runs-on: ubuntu
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Use Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: Restore dependencies
-      run: npm ci
+      - name: Restore dependencies
+        run: npm ci
 
-    - name: Run tests
-      run: npm test
+      - name: Run tests
+        run: npm test
