@@ -9,6 +9,7 @@ export class LayoutBuilder {
   #input = {};
   #buttons = {};
   #alert;
+  #table;
 
   setScreen({ title }) {
     this.#screen = blessed.screen({
@@ -160,8 +161,33 @@ export class LayoutBuilder {
     return this;
   }
 
-  setTable({numColumns}) {
+  setTable({ numColumns }) {
+    const columnWidth = Math.round(this.#layout.width / numColumns);
+    const minColumnWidth = 10;
+    const columnnWidths = Array(numColumns)
+      .fill(columnWidth)
+      .map((width) => Math.max(width, minColumnWidth));
 
+    this.#table = contrib.table({
+      parent: this.#layout,
+      mouse: true,
+      scrollbar: { ch: "", inverse: true },
+      tags: true,
+      keys: true,
+      fg: "white",
+      selectBg: "blue",
+      interactive: true,
+      label: "Users",
+      width: "100%",
+      height: "50%",
+      top: 0,
+      left: 0,
+      border: { type: "line", fg: "cyan" },
+      columnSpacing: 2,
+      columnWidth: columnnWidths,
+    });
+
+    return this;
   }
 
   build() {
@@ -170,6 +196,7 @@ export class LayoutBuilder {
       layout: this.#layout,
       form: this.#form,
       alert: this.#alert,
+      table: this.#table,
     };
     components.screen.render();
 
